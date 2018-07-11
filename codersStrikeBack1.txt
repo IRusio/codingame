@@ -1,0 +1,48 @@
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+
+/**
+ * This code automatically collects game data in an infinite loop.
+ * It uses the standard input to place data into the game variables such as x and y.
+ * YOU DO NOT NEED TO MODIFY THE INITIALIZATION OF THE GAME VARIABLES.
+ **/
+class Player
+{
+    static void Main(string[] args)
+    {
+        double thrust = 0;
+        // game loop
+        while (true)
+        {
+            string[] inputs = Console.ReadLine().Split(' ');
+            int x = int.Parse(inputs[0]); // x position of your pod
+            int y = int.Parse(inputs[1]); // y position of your pod
+            int nextCheckpointX = int.Parse(inputs[2]); // x position of the next check point
+            int nextCheckpointY = int.Parse(inputs[3]); // y position of the next check point
+
+            // Write an action using Console.WriteLine()
+            // To debug: Console.Error.WriteLine("Debug messages...");
+
+
+            // Edit this line to output the target position
+            // and thrust (0 <= thrust <= 100)
+            // i.e.: "x y thrust"
+         
+            int xTarget = nextCheckpointX;
+            int yTarget = nextCheckpointY;
+            
+            thrust  = Math.Sqrt(Math.Pow(Math.Abs(nextCheckpointX-x),2) + Math.Pow(Math.Abs(nextCheckpointY-y),2));
+    
+            if(thrust > 100) thrust = 100;
+             
+             
+             Console.Error.WriteLine( x + " " + nextCheckpointX + "  " + y + " " + nextCheckpointY + "  " + thrust);
+            Console.WriteLine(xTarget + " " + yTarget + " " + Convert.ToInt32(thrust));
+
+        }
+    }
+}
